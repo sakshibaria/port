@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Chaturvedi - Portfolio</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #6b7280;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        #hero {
+            padding-top: 8rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .section-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 24px;
+            bottom: -12px;
+            width: 2px;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            #hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 6rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Yash Chaturvedi</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <section id="hero">
+        <div class="hero-image">
+            <img src= "yash\yash .jpg" alt="Yash Chaturvedi standing next to a UN flag and emblem">
+        </div>
+        <div class="hero-content">
+            <h1>Yash Chaturvedi</h1>
+            <p class="tagline">Pre-Final Year Computer Science Student</p>
+            <p>I'm a Computer Science student with a strong foundation in web development technologies, backed by hands-on experience developing full-stack applications. Passionate about crafting responsive, user-friendly interfaces and integrating AI solutions.</p>
+            <div class="social-links">
+                <a href="mailto:yashchaturvedi0108@gmail.com">Email</a>
+                <a href="https://linkedin.com/in/yash-chaturvedi-64aa77250" target="_blank">LinkedIn</a>
+                <a href="https://github.com/yashchaturvedi00" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content">
+            <p>I'm a Computer Science student at Amity University Noida with a passion for web development, AI, and technology that makes a difference. With hands-on experience in HTML, CSS, JavaScript, React, and the MERN stack, I've built several projects that demonstrate both frontend creativity and backend integration.</p>
+            <p>I enjoy solving complex problems and creating user-friendly interfaces. When I'm not coding, I participate in events like Model United Nations and develop my international perspective. I'm proficient in English, Hindi, and have a working knowledge of French.</p>
+            <p>Currently looking for opportunities to contribute to innovative projects while continuing to expand my technical skill set.</p>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3>AI Agent</h3>
+                    <p class="timeline-date">February 2025</p>
+                    <p>Created an AI agent to predict graduate salaries based on CGPA. Implemented linear regression and machine learning algorithms, with deployment on Streamlit for easy access and usage.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>AI Writing Assistant</h3>
+                    <p class="timeline-date">January 2025</p>
+                    <p>Developed a comprehensive writing tool with spell check, grammar correction, and text rephrasing features. Used OpenAI's GPT API for text generation and built with MERN stack. Implemented Privy for secure user authentication and privacy features.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Voice-Activated Home Control Hub</h3>
+                    <p class="timeline-date">June 2024</p>
+                    <p>Designed and built a home automation system using ESP32 CAM with voice recognition capabilities. Features include humidity and temperature measurement, intrusion detection, and electronic lock control via solenoid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="section-content">
+            <h3>Technical Skills</h3>
+            <div class="skills-container">
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">GenAI</span>
+                <span class="skill-tag">LLM</span>
+                <span class="skill-tag">RAG</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">DSA</span>
+                <span class="skill-tag">UI/UX</span>
+            </div>
+            
+            <h3>Soft Skills</h3>
+            <div class="skills-container">
+                <span class="skill-tag">Strong Communication</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Team Collaboration</span>
+                <span class="skill-tag">Adaptability</span>
+            </div>
+            
+            <h3>Languages</h3>
+            <div class="skills-container">
+                <span class="skill-tag">English (Full Professional Proficiency)</span>
+                <span class="skill-tag">Hindi (Native)</span>
+                <span class="skill-tag">French (Limited Working Proficiency)</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education">
+        <h2>Education</h2>
+        <div class="section-content">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Bachelor of Technology (CSE)</h3>
+                    <p class="timeline-date">September 2022 - Present</p>
+                    <p>Amity University Noida</p>
+                    <p>CPA: 7.73</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Senior Secondary</h3>
+                    <p class="timeline-date">June 2008 - June 2022</p>
+                    <p>Kothari International School, Noida</p>
+                    <p>PCM, CS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="achievements">
+        <h2>Achievements & Certifications</h2>
+        <div class="section-content">
+            <h3>Achievements</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Cybercup 4.0</h3>
+                    <p class="timeline-date">October 2024</p>
+                    <p>Created a working model of a sleep tracker with light and heartbeat monitoring capabilities.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Model United Nations (MUN)</h3>
+                    <p class="timeline-date">September 2024</p>
+                    <p>Represented Vietnam on the topic of Sustainable Development and placed in the top 11 among all contestants.</p>
+                </div>
+            </div>
+            
+            <h3>Certifications</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Ericsson Edge Academia</h3>
+                    <p>Gained hands-on experience with advanced technologies and software solutions, focusing on real-world applications, system integration, and problem-solving techniques.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Oracle Cloud Infrastructure 2024 Generative AI Certified Professional</h3>
+                    <p>Learned how to deploy LLMs and use RAG to deploy AI Chatbots.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>The Joy of Computing Using Python</h3>
+                    <p>Learned algorithm design and use of libraries like NumPy and Matplotlib.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Foundations of Cybersecurity</h3>
+                    <p>Learned about the NIST framework of Cybersecurity and its general importance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Design Team Member</h3>
+                    <p class="timeline-date">June 2024 - Present</p>
+                    <p>Trigger Mind Club</p>
+                    <p>Help create intuitive and visually attractive posters for the coding-related club.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="section-content">
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Yash Chaturvedi. All rights reserved.</p>
+        <p>Contact: yashchaturvedi0108@gmail.com | +91 9810097314</p>
+    </footer>
+</body>
+</html>
